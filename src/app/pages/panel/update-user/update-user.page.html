@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Actualizar usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="contentBgColor hydrated" style="--offset-top:0px; --offset-bottom:0px;">
+  <div class="profileHeader bgWhite">
+    <ion-avatar class="profileImage hydrated"><img src="../../../assets/img/user.png">
+    </ion-avatar>
+    <h5 class="textBold">{{user.nombre}}</h5><span class="drivermemberType">{{user.role}}</span>
+  </div>
+  <br>
+  <ion-label class="lightTextColor sc-ion-label-md-h sc-ion-label-md-s hydrated"> INFORMACION</ion-label>
+    <ion-list class="list list-md hydrated">
+      <form [formGroup]="form" (ngSubmit)="updateUser()">
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">Nombre</h6><span class="lightTextColor" slot="end">
+          <input formControlName="nombre" type="text" class="ion-text-right">
+        </span>
+      </ion-item>
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start"> Correo electrónico</h6><span class="lightTextColor" slot="end">
+          <input formControlName="email" type="text" class="ion-text-right">
+        </span>
+      </ion-item>
+
+      <br>
+      <ion-button type="submit" #button class="button-close" color="dark" expand="block">
+        ACTUALIZAR
+      </ion-button>
+    </form>
+    </ion-list>
+</ion-content>

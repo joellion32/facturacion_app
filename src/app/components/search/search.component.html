@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-title>Buscar Clientes</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">CERRAR</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-searchbar mode="ios" placeholder="Buscar cliente" (ionChange)="onSearchChange($event)"></ion-searchbar>
+</ion-header>
+
+<ion-content>
+  <app-skeleton *ngIf="clients.length == 0"></app-skeleton>
+
+  <ion-list>
+    <ion-item button detail *ngFor="let client of clients | search: search_text: 'nombre_cliente'" (click)="getclientsID(client.id_cliente)">
+      <ion-avatar class="ion-margin">
+        <img src="../../../assets/img/user.png" />
+      </ion-avatar>
+      <ion-label>{{client.nombre_cliente}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab (click)="navigate()" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

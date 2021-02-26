@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Perfil</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="editForm(input, input1, input2, input3, button)">
+        <ion-icon name="create"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="deleteClient()">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="contentBgColor hydrated" style="--offset-top:0px; --offset-bottom:0px;">
+  <div class="profileHeader bgWhite">
+    <ion-avatar class="profileImage hydrated"><img src="../../../assets/img/user.png">
+    </ion-avatar>
+    <h5 class="textBold">{{client.nombre_cliente}}</h5><span class="drivermemberType">Cliente</span>
+  </div>
+  <br>
+  <ion-label class="lightTextColor sc-ion-label-md-h sc-ion-label-md-s hydrated"> INFORMACION</ion-label>
+    <ion-list class="list list-md hydrated">
+      <form [formGroup]="form" (ngSubmit)="updateClient()">
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">Nombre</h6><span class="lightTextColor" slot="end">
+          <input #input formControlName="nombre_cliente" type="text" disabled class="ion-text-right" value="{{client.nombre_cliente}}">
+        </span>
+      </ion-item>
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">Rnc</h6><span class="lightTextColor" slot="end">
+          <input formControlName="rnc" type="text" disabled class="ion-text-right" value="{{client.rnc}}">
+        </span>
+      </ion-item>
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">Dirección</h6><span class="lightTextColor" slot="end">
+          <input #input1 formControlName="direccion" type="text" disabled class="ion-text-right" value="{{client.direccion}}">
+        </span>
+      </ion-item>
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">Sector</h6><span class="lightTextColor" slot="end">
+          <input #input2 formControlName="sector" type="text" disabled class="ion-text-right" value="{{client.sector}}">
+        </span>
+      </ion-item>
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">Teléfono</h6><span class="lightTextColor" slot="end">
+          <input #input3 formControlName="telefono" type="text" disabled class="ion-text-right" value="{{client.telefono}}">
+        </span>
+      </ion-item>
+      <ion-item class="detailsItems item-lines-none in-list item hydrated" lines="none" ng-reflect-lines="none">
+        <h6 slot="start">Fecha de registro</h6><span class="lightTextColor" slot="end">
+          <input type="text"  disabled class="ion-text-right" value="{{client.updated_at}}">
+        </span>
+      </ion-item><br>
+
+      <ion-button type="submit" #button class="button-close" color="dark" disabled expand="block">
+        ACTUALIZAR
+      </ion-button>
+    </form>
+    </ion-list>
+</ion-content>

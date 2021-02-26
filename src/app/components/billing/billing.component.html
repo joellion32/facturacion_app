@@ -1,0 +1,44 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button (click)="save_invoice()">
+          Facturar
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="modalDismiss()">
+          Cerrar
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">Facturación</ion-title>
+  </ion-toolbar>
+    <app-display [total]="dataService.total" ></app-display>
+  <hr>
+</ion-header>
+
+
+<ion-content *ngIf="products.length != 0">
+  <ion-item *ngFor="let invoice of products; let i = index">
+    <ion-label class="ion-text-wrap">{{invoice.name}}
+      <p>{{invoice.cant}} {{invoice.unit | uppercase}}</p>
+    </ion-label>
+    <ion-label class="ion-text-right" slot="end">RD$ {{ invoice.price | number}}</ion-label>
+      <ion-icon (click)="deleteProduct(i)" slot="end" color="danger" name="trash"></ion-icon>
+  </ion-item>
+
+  
+  <ion-fab (click)="deleteAll()" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger">
+      <ion-icon name="trash"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+
+<ion-content *ngIf="products.length === 0">
+  <ion-item lines="none">
+    <ion-label class="ion-text-center">No hay productos que mostrar</ion-label>
+  </ion-item>
+</ion-content>

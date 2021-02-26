@@ -1,0 +1,11 @@
+<ion-item button *ngFor="let product of products | search: search_text: 'nombre_producto'" (click)="navigate(product.id_producto)">
+  <ion-thumbnail slot="start">
+    <p>p</p>
+    <span>{{product.nombre_producto | slice:0:2 | uppercase}}</span>
+  </ion-thumbnail>
+  <ion-label class="ion-text-wrap">{{product.nombre_producto}}
+    <p class="cod">{{product.cod_producto}}</p>
+  </ion-label>
+  <ion-label slot="end" class="ion-text-right">{{[product.precio1, product.precio2, product.precio3] | count}} precios</ion-label>
+</ion-item>
+

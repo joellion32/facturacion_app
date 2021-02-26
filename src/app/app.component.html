@@ -1,3 +1,32 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start" type="push" menuId="first" contentId="main" color="dark">
+    <ion-content color="dark">
+      <ion-list lines="none">
+        <ion-item button color="dark" (click)="navigate('view-invoices')">
+          <ion-icon slot="start" name="card"></ion-icon>FACTURAS
+        </ion-item>
+
+        <ion-item button color="dark" (click)="navigate('reports')">
+          <ion-icon slot="start" name="cellular"></ion-icon>REPORTES
+        </ion-item>
+
+        <ion-item button color="dark" (click)="navigate('view-products')">
+          <ion-icon slot="start" name="document"></ion-icon>
+            INVENTARIO
+        </ion-item>
+
+        <ion-item button color="dark" (click)="navigate('view-clients')">
+          <ion-icon slot="start" name="people"></ion-icon>
+            CLIENTES
+        </ion-item>
+
+        <ion-item button color="dark" (click)="navigate('settings')">
+          <ion-icon slot="start" name="settings-sharp"></ion-icon>
+            CONFIGURACION
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

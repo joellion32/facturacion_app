@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cantidad y Precio mínimo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<form class="ion-margin" [formGroup]="form" (ngSubmit)="saveProduct()">
+<ion-item lines="none">
+    <ion-label>COSTOS</ion-label>
+</ion-item>
+
+  <mat-form-field appearance="outline">
+    <span matPrefix>RD$&nbsp;</span>
+    <mat-label>Costo 1</mat-label>
+    <input formControlName="costo1" type="tel" matInput  class="example-right-align">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <span matPrefix>RD$&nbsp;</span>
+    <mat-label>Costo 2</mat-label>
+    <input formControlName="costo2" type="tel" matInput  class="example-right-align">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <span matPrefix>RD$&nbsp;</span>
+    <mat-label>Costo 3</mat-label>
+    <input formControlName="costo3" type="tel" matInput  class="example-right-align">
+  </mat-form-field>
+
+  <ion-item lines="none">
+    <ion-label>PRECIOS MINIMOS</ion-label>
+</ion-item>
+
+  <mat-form-field appearance="outline">
+    <span matPrefix>RD$&nbsp;</span>
+    <mat-label>Precio mínimo 1</mat-label>
+    <input formControlName="precio_minimo1" type="tel" matInput  class="example-right-align">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <span matPrefix>RD$&nbsp;</span>
+    <mat-label>Precio mínimo 2</mat-label>
+    <input formControlName="precio_minimo2" type="tel" matInput  class="example-right-align">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <span matPrefix>RD$&nbsp;</span>
+    <mat-label>Precio mínimo 3</mat-label>
+    <input formControlName="precio_minimo3" type="tel" matInput  class="example-right-align">
+  </mat-form-field>
+  
+  <br>
+  <ion-button type="submit" color="dark" expand="block">
+    CONTINUAR
+  </ion-button>
+</form>
+
+</ion-content>

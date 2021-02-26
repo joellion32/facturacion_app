@@ -1,0 +1,49 @@
+
+
+input {
+    width: 100% !important;
+    border: 0px white;
+    height: 48px !important;
+    background-color: white;
+}
+
+.contentBgColor {
+    --background: #F0F1F2 !important;
+}
+
+.sc-ion-back-button-ios-h{
+    display: inline;
+}
+
+.detailsItems{
+    // --min-height: 30px;
+    --padding-start:8px;
+}
+
+.rightArrow{
+    width: 16px;
+    right: 0;
+    position: absolute;
+}
+
+.bgWhite {
+    background: #fff;
+}
+
+.lightTextColor {
+    color: #c1c1c2;
+}
+
+.ion-margin-top, [margin-top] {
+    --margin-top: var(--ion-margin, 16px);
+    margin-top: var(--ion-margin, 16px);
+}
+.ion-padding-start, [padding-start] {
+    --padding-start: var(--ion-padding, 16px);
+    padding-left: var(--ion-padding, 16px);
+}
+
+ion-icon{
+    font-size: 30px !important;
+}
+

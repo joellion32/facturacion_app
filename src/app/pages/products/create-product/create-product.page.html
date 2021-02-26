@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Información del producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+<form class="ion-margin" [formGroup]="form" (ngSubmit)="navigate()">
+  
+  <mat-form-field appearance="outline">
+    <mat-label>Código producto</mat-label>
+    <input type="tel" formControlName="cod_producto" matInput placeholder="Código producto">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Categoría</mat-label>
+    <input formControlName="categoria" matInput placeholder="Categoría">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Nombre producto</mat-label>
+    <input formControlName="nombre_producto" matInput placeholder="Nombre producto">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Unidad 1</mat-label>
+    <input class="input1" formControlName="unidad1" matInput placeholder="Unidad 1">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Unidad 2</mat-label>
+    <input class="input1" formControlName="unidad2" matInput placeholder="Unidad 2">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Unidad 3</mat-label>
+    <input class="input1" formControlName="unidad3" matInput placeholder="Unidad 3">
+  </mat-form-field>
+  <br>
+  <ion-button type="submit" color="dark" expand="block">
+    CONTINUAR
+  </ion-button>
+</form>
+
+</ion-content>

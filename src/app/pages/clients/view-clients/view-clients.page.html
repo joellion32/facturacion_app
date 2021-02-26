@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Clientes</ion-title>
+  </ion-toolbar>
+  <ion-searchbar mode="ios" placeholder="Buscar cliente" (ionChange)="onSearchChange($event)"></ion-searchbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+
+  <app-skeleton *ngIf="clients.length == 0"></app-skeleton>
+
+  <ion-list *ngIf="clients.length != 0">
+    <ion-item button detail *ngFor="let client of clients | search: search_text: 'nombre_cliente'" [routerLink]="['/detail-client', client.id_cliente]"
+    routerLinkActive="router-link-active">
+      <ion-avatar class="ion-margin">
+        <img src="../../../assets/img/user.png" />
+      </ion-avatar>
+      <ion-label>{{client.nombre_cliente}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab [routerLink]="['/create-client']" routerLinkActive="router-link-active"  vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

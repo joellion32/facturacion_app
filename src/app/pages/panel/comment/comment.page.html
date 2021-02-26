@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Queja o comentario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <div class="ion-margin">
+    <ion-item lines="none">
+      <ion-label class="ion-text-wrap">Estaremos comunicándonos con usted por teléfono en un lapso de 24 horas.</ion-label>
+    </ion-item>
+    <br>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Numero teléfonico</mat-label>
+      <input type="tel" [(ngModel)]="data.phone" matInput placeholder="Numero teléfonico" required>
+    </mat-form-field>
+
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Comentario</mat-label>
+      <textarea matInput [(ngModel)]="data.comment"></textarea>
+    </mat-form-field>
+  
+    <ion-button (click)="sendComment()" color="dark" expand="block">
+      ENVIAR
+    </ion-button>
+  </div>
+</ion-content>

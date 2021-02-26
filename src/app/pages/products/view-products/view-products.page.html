@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button (click)="back()" ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Inventario</ion-title>
+  </ion-toolbar>
+  <ion-searchbar mode="ios" placeholder="Buscar producto" (ionChange)="onSearchChange($event)"></ion-searchbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <app-skeleton *ngIf="products.length == 0" [status]="true"></app-skeleton>
+  <app-products *ngIf="products.length != 0" [products]="products" [detail]="false"></app-products>
+ 
+  <ion-infinite-scroll threshold="10px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  
+  <ion-fab [routerLink]="['/create-product']"  vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

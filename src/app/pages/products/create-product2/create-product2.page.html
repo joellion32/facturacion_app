@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cantidad y Precio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <form class="ion-margin" [formGroup]="form" (ngSubmit)="navigate()">
+    <ion-item lines="none">
+      <ion-label>CANTIDAD</ion-label>
+    </ion-item>
+
+    <mat-form-field appearance="outline">
+      <span matPrefix>{{product.unidad1 | uppercase}}&nbsp;</span>
+      <input formControlName="cantidad1" matInput type="tel" class="example-right-align" placeholder="0">
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <span matPrefix>{{product.unidad2 | uppercase}}&nbsp;</span>
+      <input formControlName="cantidad2" matInput type="tel" class="example-right-align" placeholder="0">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <span matPrefix>{{product.unidad3 | uppercase}}&nbsp;</span>
+      <input formControlName="cantidad3" matInput type="tel" class="example-right-align" placeholder="0">
+    </mat-form-field>
+
+
+ <ion-item lines="none">
+      <ion-label>PRECIOS</ion-label>
+  </ion-item>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Precio 1</mat-label>
+      <span matPrefix>RD$&nbsp;</span>
+      <input formControlName="precio1" matInput type="tel" class="example-right-align" placeholder="0.00">
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Precio 2</mat-label>
+      <span matPrefix>RD$&nbsp;</span>
+      <input formControlName="precio2" matInput type="tel" class="example-right-align" placeholder="0.00">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Precio 3</mat-label>
+      <span matPrefix>RD$&nbsp;</span>
+      <input  formControlName="precio3" matInput type="tel" class="example-right-align" placeholder="0.00">
+    </mat-form-field>
+
+  
+    <mat-form-field appearance="outline">
+      <mat-label>ITBIS</mat-label>
+      <span matPrefix>RD$&nbsp;</span>
+      <input formControlName="itbs" matInput type="tel" class="example-right-align" placeholder="0.00">
+    </mat-form-field>
+
+    
+    <br>
+    <ion-button type="submit" color="dark" expand="block">
+      CONTINUAR
+    </ion-button>
+  </form>
+
+</ion-content>

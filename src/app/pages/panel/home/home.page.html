@@ -1,0 +1,99 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button (click)="menuToggle()">
+        <ion-icon slot="start" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">
+      Venta actual
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="billyPage()">
+        <ion-icon slot="end" name="apps-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <div class="header">
+    <app-display [total]="dataService.total"></app-display>
+    <br>
+    <ion-segment (ionChange)="segmentChanged($event)" color="dark" class="custom" value="client">
+      <ion-segment-button value="client">
+        <ion-label>CLIENTE</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="inventory">
+        <ion-label>INVENTARIO</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <hr color="black">
+  </div>
+
+  <!--display the page inventory search bar-->
+  <ion-row id="iventory" *ngIf="valueSegment == 'inventory'">
+
+    <ion-col style="height: 110%;" size="12" style="display: none;" id="row-search">
+      <ion-searchbar id="search" placeholder="Buscar" [(ngModel)]="search_text" (ionCancel)="cancelSearch()"
+        showCancelButton></ion-searchbar>
+
+        <ion-button id="button" style="display: none; width: 96%; margin: 5px;" (click)="search()" size="small">
+          Buscar
+        </ion-button>
+    </ion-col>
+  
+    <ion-col id="column1" size="10">
+      <h3>Todos los productos</h3>
+    </ion-col>
+    <ion-col id="column2" (click)="activateSearch()" class="ion-activatable ripple-parent" size="2">
+      <i class="fas fa-search"></i>
+      <ion-ripple-effect></ion-ripple-effect>
+    </ion-col>
+    <hr color="gray">
+  </ion-row>
+</ion-header>
+
+
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+  <div id="clients" *ngIf="valueSegment == 'client'">
+    <div class="form">
+      <ion-item lines="none">
+        <input class="input" [(ngModel)]="client.nombre" type="text" placeholder="NOMBRE CLIENTE" disabled>
+      </ion-item>
+
+      <ion-item lines="none">
+        <input class="input" [(ngModel)]="client.rnc" type="text" placeholder="RNC" disabled>
+      </ion-item>
+
+      <ion-item lines="none">
+        <input class="input" [(ngModel)]="client.telefono" type="text" placeholder="TELEFONO" disabled>
+      </ion-item>
+
+      <ion-item lines="none">
+        <input class="input" [(ngModel)]="client.direccion" type="text" placeholder="DIRECCION" disabled>
+      </ion-item>
+
+      <ion-item lines="none">
+        <input class="input" [(ngModel)]="client.sector" type="text" placeholder="SECTOR" disabled>
+      </ion-item><br>
+
+      <ion-button (click)="searchClient()" color="dark" expand="block">
+        BUSCAR CLIENTE
+      </ion-button>
+    </div> 
+  </div>
+
+  <div *ngIf="valueSegment == 'inventory'">
+    <app-skeleton *ngIf="productsHome.length == 0" [status]="true"></app-skeleton>
+    <app-products *ngIf="productsHome.length != 0" [products]="productsHome" [detail]="true"></app-products>
+    <ion-infinite-scroll [disabled]="!enabled" threshold="10px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+</ion-content>

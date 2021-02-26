@@ -1,0 +1,47 @@
+.contentBgColor {
+    --background: #F0F1F2 !important;
+}
+
+.sc-ion-back-button-ios-h{
+    display: inline;
+}
+
+
+.detailsItems{
+    // --min-height: 30px;
+    --padding-start:8px;
+}
+
+.bgWhite {
+    background: #fff;
+}
+
+.lightTextColor {
+    color: #9B9B9F;
+}
+
+.ion-margin-top, [margin-top] {
+    --margin-top: var(--ion-margin, 16px);
+    margin-top: var(--ion-margin, 16px);
+}
+.ion-padding-start, [padding-start] {
+    --padding-start: var(--ion-padding, 16px);
+    padding-left: var(--ion-padding, 16px);
+}
+
+.title{
+    margin-left: 5px !important;
+}
+
+.total{
+    background-color: black !important;
+}
+
+.client{
+    color: black;
+    font-weight: bold;
+}
+
+ion-icon{
+    font-size: 30px !important;
+}

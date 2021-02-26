@@ -1,0 +1,117 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center ion-text-wrap">{{product.nombre_producto}}</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button *ngIf="edit === true" (click)="editForm(input2, input3, input4, input5, input6, input7, input8, input9, input10, input11)">
+        <ion-icon name="create"></ion-icon>
+      </ion-button>
+
+      <ion-button *ngIf="edit === false" (click)="updateProduct()">
+        <ion-icon name="save"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="ConfirmDeleteProduct()">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="contentBgColor hydrated" style="--offset-top:0px; --offset-bottom:0px;">
+
+
+  <!--Informacion del producto -->
+  <ion-label class="lightTextColor sc-ion-label-md-h sc-ion-label-md-s hydrated"><br>INFORMACION DEL PRODUCTO</ion-label>
+    <ion-list class="list list-md hydrated">
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">Código producto</h6><span class="lightTextColor" slot="end">
+          <input #input1 [(ngModel)]="product.cod_producto"  type="tel" disabled class="ion-text-right">
+        </span>
+      </ion-item>
+
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">Categoría</h6><span class="lightTextColor" slot="end">
+          <input #input2 [(ngModel)]="product.categoria" type="text" disabled class="ion-text-right" value="{{product.categoria}}">
+        </span>
+      </ion-item>
+    </ion-list>
+
+  <!--Precio del producto -->
+    <ion-label class="lightTextColor sc-ion-label-md-h sc-ion-label-md-s hydrated"><br>PRECIO DEL PRODUCTO</ion-label>
+    <ion-list class="list list-md hydrated">
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">Precio 1
+          <p class="lightTextColor">{{product.unidad1 | uppercase}}</p>
+        </h6><span class="lightTextColor" slot="end">
+          <input #input3 [(ngModel)]="product.precio1" type="tel" disabled class="ion-text-right" value="{{product.precio1}}">
+        </span>
+      </ion-item>
+
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">Precio 2
+          <p class="lightTextColor">{{product.unidad2 | uppercase}}</p>
+        </h6><span class="lightTextColor" slot="end">
+          <input #input4 [(ngModel)]="product.precio2" type="tel" disabled class="ion-text-right" value="{{product.precio2}}">
+        </span>
+      </ion-item>
+
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">Precio 3
+          <p class="lightTextColor">{{product.unidad3 | uppercase}}</p>
+        </h6><span class="lightTextColor" slot="end">
+          <input #input5 [(ngModel)]="product.precio3" type="tel" disabled class="ion-text-right" value="{{product.precio3}}">
+        </span>
+      </ion-item>
+    </ion-list>
+
+    <!--Costo del producto -->
+    <ion-label class="lightTextColor sc-ion-label-md-h sc-ion-label-md-s hydrated"><br>COSTO DEL PRODUCTO</ion-label>
+    <ion-list class="list list-md hydrated">
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">Costo 1</h6><span class="lightTextColor" slot="end">
+          <input #input6 [(ngModel)]="product.costo1" type="tel" disabled class="ion-text-right" value="{{product.costo1}}">
+        </span>
+      </ion-item>
+
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">Costo 2</h6><span class="lightTextColor" slot="end">
+          <input #input7 [(ngModel)]="product.costo2" type="tel" disabled class="ion-text-right" value="{{product.costo2}}">
+        </span>
+      </ion-item>
+
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">Costo 3</h6>
+        <span class="lightTextColor" slot="end">
+          <input #input8 [(ngModel)]="product.costo3" type="tel" disabled class="ion-text-right" value="{{product.costo3}}">
+        </span>
+      </ion-item>
+    </ion-list>
+
+
+    <!--Precios minimos -->
+    <ion-label class="lightTextColor sc-ion-label-md-h sc-ion-label-md-s hydrated"><br>PRECIO MINIMO DEL PRODUCTO</ion-label>
+    <ion-list class="list list-md hydrated">
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">Precio mínimo 1</h6><span class="lightTextColor" slot="end">
+          <input #input9 [(ngModel)]="product.precio_minimo1" type="tel" disabled class="ion-text-right" value="{{product.precio_minimo1}}">
+        </span>
+      </ion-item>
+
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">Precio mínimo 2</h6><span class="lightTextColor" slot="end">
+          <input #input10  [(ngModel)]="product.precio_minimo2" type="tel" disabled class="ion-text-right" value="{{product.precio_minimo2}}">
+        </span>
+      </ion-item>
+
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">Precio mínimo 3</h6><span class="lightTextColor" slot="end">
+          <input #input11 [(ngModel)]="product.precio_minimo3" type="tel" disabled class="ion-text-right" value="{{product.precio_minimo3}}">
+        </span>
+      </ion-item>
+    </ion-list>
+
+</ion-content>

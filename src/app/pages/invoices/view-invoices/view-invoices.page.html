@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Facturas</ion-title>
+    <!---*ion-buttons *ngIf="role == 'ADMIN'" slot="end">
+        <ion-button (click)="selectUsers($event)">
+          <ion-icon slot="icon-only" name="person"></ion-icon>
+        </ion-button>
+    </ion-buttons> !--->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-item lines="none">
+  <h3 *ngIf="invoices.length != 0">Todas las Facturas</h3>
+  <h3 *ngIf="invoices.length == 0">No hay facturas que mostrar</h3>
+</ion-item>
+
+<app-skeleton *ngIf="invoices.length == 0" [status]="true"></app-skeleton>
+
+<ion-list>
+  <ion-item-sliding  *ngFor="let invoice of invoices">
+    <ion-item lines="full" detail button [routerLink]="['/detail-invoice', invoice.id_factura]">
+      <ion-icon slot="start" name="card"></ion-icon>
+      <ion-label>
+        <span>{{invoice.cod_factura}}</span>
+        <p>{{invoice.fecha | date}}</p>
+      </ion-label>
+      <ion-label slot="end" class="ion-text-right">RD$ {{invoice.total}}</ion-label>
+    </ion-item>
+
+    <ion-item-options side="end">
+      <ion-item-option color="danger" (click)="deleteInvoice(invoice.id_factura)">
+        <ion-icon class="delete" name="trash"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+
+</ion-content>

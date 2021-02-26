@@ -1,0 +1,53 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="searchReports()" expand="block" fill="clear" shape="round">
+        <ion-icon slot="start" name="search"></ion-icon>
+        BUSCAR
+      </ion-button>
+    </ion-buttons>
+    
+    <ion-title>Reportes</ion-title>
+  </ion-toolbar>
+
+  <ion-item detail>
+    <ion-icon slot="start" name="calendar"></ion-icon>
+    <ion-label>Fecha desde</ion-label>
+    <ion-datetime [(ngModel)]="date1" display-format="DD.MM.YYYY"></ion-datetime>
+  </ion-item>
+
+  <ion-item detail>
+    <ion-icon slot="start" name="calendar"></ion-icon>
+    <ion-label>Fecha hasta</ion-label>
+    <ion-datetime [(ngModel)]="date2" display-format="DD.MM.YYYY"></ion-datetime>
+  </ion-item>
+</ion-header>
+
+<ion-content>
+  <div class="ion-margin">
+    <h3 class="ion-text-center" *ngIf="reports.length == 0">No hay reportes</h3>
+
+
+    <h3 class="ion-text-left">{{reports.date | date}}</h3>
+
+     <h1 class="ion-text-left">RD$ {{reports.total}}</h1>
+     <p>Total de ventas</p>
+
+     <h1>{{reports.sales}}</h1>
+     <p>ventas</p>
+  </div>
+  <hr color="black">
+  <div class="ion-margin">
+    <h4 class="ion-text-center">Gráficos</h4>
+      <div class="chart">
+        <canvas id="myChart" width="100" height="100"></canvas>
+      </div>
+  </div>
+</ion-content>
+
+
+

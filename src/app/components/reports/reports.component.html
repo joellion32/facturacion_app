@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        CERRAR
+      </ion-button>
+    </ion-buttons>
+
+
+    <ion-title>Detalles de reporte</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h3 color="light" class="ion-text-center" *ngIf="sales.length == 0">No hay reportes</h3>
+
+
+  <div *ngFor="let report of sales" class="ion-margin">
+    <h3 class="ion-text-left">{{report.fecha | date}}</h3>
+     <h1 class="ion-text-left">RD$ {{report.total_ventas}}</h1>
+     <p>Total de ventas</p>
+     <h1>{{report.ventas}}</h1>
+     <p>ventas</p>
+     <hr color="black">    
+    </div>
+  
+</ion-content>

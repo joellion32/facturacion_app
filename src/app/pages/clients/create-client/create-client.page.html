@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <form class="ion-margin" [formGroup]="form" (ngSubmit)="saveClient()">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input type="text" required formControlName="nombre_cliente" matInput placeholder="Nombre Cliente">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Rnc</mat-label>
+      <input type="text" required formControlName="rnc" matInput placeholder="Rnc">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Dirección</mat-label>
+      <input type="text" required formControlName="direccion" matInput placeholder="Dirección">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Sector</mat-label>
+      <input type="text" required formControlName="sector" matInput placeholder="Sector">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Teléfono</mat-label>
+      <input type="tel"required formControlName="telefono" matInput placeholder="Teléfono">
+    </mat-form-field>
+    
+    <br>
+    <ion-button type="submit" color="dark" expand="block">
+      Guardar Cliente
+    </ion-button>
+  </form>
+
+</ion-content>

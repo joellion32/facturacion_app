@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Factura {{invoice.cod_factura}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-margin contentBgColor hydrated" style="--offset-top:0px; --offset-bottom:0px;">
+  <br>
+  <ion-spinner *ngIf="products.length == 0"></ion-spinner>
+ 
+  <ion-label *ngIf="products.length != 0" class="lightTextColor sc-ion-label-md-h sc-ion-label-md-s hydrated title">INFORMACION DE LA FACTURA</ion-label>
+    <ion-list class="list list-md hydrated">
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">Nombre del cliente</h6>
+        <span class="client" slot="end" [routerLink]="['/detail-client', invoice.id_cliente]">
+         {{invoice.nombre_cliente}}
+        </span>
+      </ion-item>
+
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">Vendedor</h6>
+        <span slot="end">
+         {{invoice.nombre}}
+        </span>
+      </ion-item>
+
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">RNC</h6>
+        <span slot="end" *ngIf="invoice.rnc == NULL">
+         NO TIENE 
+        </span>
+
+        <span *ngIf="invoice.rnc != NULL" slot="end">
+          {{invoice.rnc}}
+         </span>
+      </ion-item>
+    </ion-list>
+
+
+    <br>
+  <ion-label class="lightTextColor sc-ion-label-md-h sc-ion-label-md-s hydrated title">DETALLES DE LA FACTURA</ion-label>
+    <ion-list class="list list-md hydrated">
+    
+      <ion-item *ngFor="let product of products" class="detailsItems item-lines-full in-list item hydrated" lines="full" ng-reflect-lines="full">
+        <h6 slot="start">{{product.nombre_producto}}
+          <p class="lightTextColor">{{product.cantidad}} {{product.unidad | uppercase}}</p>
+        </h6>
+        <span slot="end">
+         RD$ {{product.precio}}
+        </span>
+      </ion-item>
+    </ion-list>
+
+    <div>
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="none" ng-reflect-lines="full">
+        <h6 slot="start">Fecha</h6>
+        <span slot="end">
+         {{invoice.fecha | date}}
+        </span>
+      </ion-item>
+
+      <ion-item class="detailsItems item-lines-full in-list item hydrated" lines="none" ng-reflect-lines="full">
+        <h6 slot="start">Total Factura</h6>
+        <span slot="end">
+         RD$ {{invoice.total}}
+        </span>
+      </ion-item>
+     </div>
+</ion-content>

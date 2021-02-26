@@ -1,0 +1,26 @@
+<ion-header>
+<div class="header">
+  <ion-icon name="card"></ion-icon>
+  <h2>Persoft App</h2>
+</div>
+</ion-header>
+
+<ion-content>
+<div class="form">
+  <ion-item>
+    <ion-label position="floating">Correo Electronico</ion-label>
+    <ion-input [(ngModel)]="user.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Contraseña</ion-label>
+    <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+  </ion-item>
+<br>
+  <ion-button (click)="Login()" expand="block" color="primary">
+    Iniciar Sesion
+  </ion-button>
+</div>
+
+<p [routerLink]="['/reset-password']" >Has olvidado la contraseña</p>
+</ion-content>
